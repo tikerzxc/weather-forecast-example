@@ -8,12 +8,11 @@ import {  Typography } from '@material-ui/core';
 import { usePosition } from 'use-position';
 
 import { setGeoData, setGeoDataError, fetchData } from '../../actions';
-import { getLoading, getForecastData } from '../../selectors';
+import { getForecastData } from '../../selectors';
 
 import { Grid } from '@material-ui/core';
 
 import MainContent from '../mainContent/MainContent';
-import Spinner from '../loadingSpinner/LoadingSpinner';
 import Logo from '../../shared/icons/Logo';
 
 import useStyles from './styles';
@@ -24,7 +23,6 @@ const AppLayout = () => {
   const geoData = usePosition();
   const dispatch = useDispatch();
 
-  const isLoading = useSelector(getLoading);
   const forecastData = useSelector(getForecastData);
 
   useEffect(() => {
@@ -49,7 +47,6 @@ const AppLayout = () => {
           WEATHER FORECAST
         </Typography>
       </Grid>  
-     {isLoading && <Spinner />}
      {forecastData && <MainContent data={forecastData} />}
     </Grid>
   );

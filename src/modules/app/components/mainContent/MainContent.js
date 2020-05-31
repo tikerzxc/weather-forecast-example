@@ -2,7 +2,9 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
-import { Box, Grid, List, ListItem, ListItemText, Typography } from "@material-ui/core";
+import { Box, Grid, List, ListItem, ListItemText, Typography } from '@material-ui/core';
+
+import WithLoader from '../../hocs/WithLoader';
 
 import useStyles from './styles';
 import { resultShape } from './shapes';
@@ -49,4 +51,4 @@ MainContent.propTypes = {
   data: PropTypes.shape(resultShape).isRequired
 }
 
-export default MainContent;
+export default WithLoader(MainContent);
